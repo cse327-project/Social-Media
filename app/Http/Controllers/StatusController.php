@@ -14,7 +14,7 @@ class StatusController extends Controller
      */
     public function index()
     {
-        $statuses = Status::all();
+        $statuses = Status::latest()->get();
         return view('status.index', compact('statuses'));
     }
 
@@ -52,7 +52,8 @@ class StatusController extends Controller
      */
     public function show(Status $status)
     {
-        //
+        $comments = $status->comments;
+        return view('status.show', compact('status', 'comments'));
     }
 
     /**

@@ -20,8 +20,7 @@
             </div>
 
             @foreach ($statuses as $status)
-                <h1>{{$status->id}}</h1>
-                <h1>{{$status->text}}</h1>
+                @include('components.status.status-card' , $status)
             @endforeach
 
 

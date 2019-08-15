@@ -15,3 +15,4 @@ Auth::routes();
 
 Route::get('/', 'StatusController@index');
 Route::resource('/status', 'StatusController');
+Route::resource('/comments', 'CommentController');
