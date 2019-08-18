@@ -7,3 +7,20 @@
         }
     }
 }
+
+.replies {
+    .reply {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        font-size: 12px;
+    }
+    .reply-input {
+        border: none;
+        width: 100%;
+        border-bottom: 1px dashed #ddd;
+        font-size: 12px;
+        &:focus {
+            outline: none;
+        }
+    }
+}

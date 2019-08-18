@@ -52,6 +52,16 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="{{ route('user.profile' , Auth::user()->username) }}">
+                                        My Profile
+                                    </a>
+
+
+                                    <a class="dropdown-item" href="{{ route('user.settings') }}">
+                                        Settings
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

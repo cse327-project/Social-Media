@@ -35,7 +35,16 @@ class ReplyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'text' => 'required',
+        ]);
+
+        Reply::create([
+            'text' => $request->text,
+            'comment_id' => $request->comment_id,
+            'user_id' => \Auth::user()->id,
+        ]);
+        return redirect()->back();
     }
 
     /**

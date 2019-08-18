@@ -1,17 +1,17 @@
 User ->
-    register
-    login
-    take date of birth from registration
+    register ✅
+    login ✅
+    take date of birth from registration ✅
 Profile
-    -> All Status given by him
-    -> Status Box if login
+    -> All Status given by him ✅
+    -> Status Box if login ✅
 Settings
-    -> Settings
+    -> Settings ✅
 Status
-    -> Update
+    -> Update ✅
 Comments
-    -> index
-    -> update
+    -> index ✅
+    -> update ✅
         -> replies
             -> update
             -> edit

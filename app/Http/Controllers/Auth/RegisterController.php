@@ -65,7 +65,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         $request = request();
         // $file = $request->file('profile_photo');
         // $image = $file->move('public/profile_photos', $file->getClientOriginalName());
@@ -74,6 +73,9 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'username' => $request->username,
+            'gender' => $data['gender'],
+            'date_of_birth' => $data['date_of_birth'],
+            'bio' => $data['bio'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

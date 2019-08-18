@@ -10,10 +10,8 @@
                     {{ $comment->text }}
                 </div>
 
-
-
                 <div>
-                    
+                    @if (auth()->user()->id === $comment->user->id)
                     <form action="{{ route('comments.destroy' , $comment->id ) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
@@ -24,7 +22,12 @@
                     <a class="editButton btn btn-sm btn-link text-primary pl-0" href="{{ route('comments.edit' , $comment->id) }}">
                         Edit
                     </a>
+                    @endif
                 </div>
+
+                @include('components.status.replies')
+
+
             </div>
         </div>
     </div>
