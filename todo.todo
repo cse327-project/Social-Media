@@ -1,0 +1,17 @@
+User ->
+    register
+    login
+    take date of birth from registration
+Profile
+    -> All Status given by him
+    -> Status Box if login
+Settings
+    -> Settings
+Status
+    -> Update
+Comments
+    -> index
+    -> update
+        -> replies
+            -> update
+            -> edit

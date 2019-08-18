@@ -20,7 +20,7 @@
             </div>
 
             @foreach ($statuses as $status)
-                @include('components.status.status-card' , $status)
+                @include('components.status.status-card')
             @endforeach
 
 

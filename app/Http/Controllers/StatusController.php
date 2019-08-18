@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Status;
 use Illuminate\Http\Request;
 
+
 class StatusController extends Controller
 {
     /**
@@ -64,7 +65,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        //
+        return view('status.edit', compact('status'));
     }
 
     /**
@@ -76,7 +77,17 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
-        //
+
+        $request->validate([
+            'text' => 'min:5|required'
+        ]);
+
+        $status->update([
+            'text' => $request->text
+        ]);
+
+
+        return redirect()->route('status.show', $status->id);
     }
 
     /**

@@ -62,7 +62,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -74,7 +74,10 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->update([
+            'text' => $request->text
+        ]);
+        return redirect()->route('status.show', $comment->status->id);
     }
 
     /**
@@ -85,6 +88,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirect()->back();
     }
 }
