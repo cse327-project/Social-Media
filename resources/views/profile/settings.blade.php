@@ -3,14 +3,22 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
                     Update profile
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('user.settingsUpdate') }}" method="POST">
+                    <form action="{{ route('user.settingsUpdate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="mb-5">
+                            <img width="100" height="100" src="{{ Storage::url($user->profile_photo) }}" alt="{{ $user->name }}">
+                            <br>
+                            <input class="pt-2" type="file" name="profile_photo" id="">
+                        </div>
+
+
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-control @error('name') is-invalid  @enderror" placeholder="Your Name" value="{{ $user->name }}">
@@ -51,49 +59,21 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="gender">Your Gender</label>
                             <select name="gender" id="gender" class="form-control">
                                 <option value="male" @if($user->gender == 'male')selected="selected"@endif>Male</option>
                                 <option value="female" @if($user->gender == 'female')selected="selected"@endif>Female</option>
                                 <option value="other" @if($user->gender == 'other')selected="selected"@endif>Other</option>
                             </select>
-                        </div> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Change Password</label>
+                            <input type="text" id="password" name="password" class="form-control" placeholder="New Password">
+                        </div>
                         
                         <div class="form-group">
                             <button class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-md-5">
-            <div class="card">
-                <div class="card-header">
-                    Update Password
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('user.settingsUpdate') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="password">New Password</label>
-                            <input type="text" id="password" name="name" class="form-control @error('password') is-invalid  @enderror" placeholder="New Password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="password_confirmation">Confirm New Password</label>
-                            <input type="text" id="password_confirmation" name="password_confirmation" class="form-control"
-                            placeholder="Confirm New Password" >
-                        </div>
-                        
-                        <div class="form-group">
-                            <button name="password_update" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>

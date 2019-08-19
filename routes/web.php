@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 
 Auth::routes();
 
@@ -15,3 +16,17 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get('/user/{username}', 'ProfileController@get_profile')->name('user.profile');
+Route::get('/user/{username}', 'ProfileController@get_profile')->name('user.profile');
+
+
+
+Route::get('/upload', function () {
+    return view('upload');
+});
+
+
+Route::post('/upload', function (Request $request) {
+
+    $image = $request->image->store('/public/profile-photos');
+    return $image;
+});

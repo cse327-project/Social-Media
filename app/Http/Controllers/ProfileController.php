@@ -31,29 +31,27 @@ class ProfileController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id]
         ]);
 
-        $user->update($request->all());
+        $new_profile_data = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "username" => $request->username,
+            "bio" => $request->bio,
+            "gender" => $request->gender
+        ];
 
 
-        // if ($request->has('setting_update')) {
+        if ($request->profile_photo) {
+            $image = $request->profile_photo->store('/public/profile-photos');
+            $user->update(['profile_photo' => $image]);
+            $new_profile_data['profile_photo'] = $image;
+        }
 
-        //     $request->validate([
-        //         'name'     => ['required', 'string', 'max:255'],
-        //         'email'    => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
-        //         'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id]
-        //     ]);
+        if ($request->password) {
+            $new_profile_data['password'] = bcrypt($request->password);
+        }
 
-        //     $user->update($request->all());
-        // }
-        // if ($request->has('password_update')) {
+        $user->update($new_profile_data);
 
-        //     $request->validate([
-        //         'password' => ['required', 'string', 'min:8', 'confirmed']
-        //     ]);
-
-        //     $user->update([
-        //         'password' => bcrypt($request->password)
-        //     ]);
-        // }
         return redirect()->back();
     }
 }

@@ -8,23 +8,18 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
-
-
-                        {{-- <div class="form-grpup row">
+                        <div class="form-grpup row">
                             <label for="profile_photo" class="col-md-4 col-form-label text-md-right">{{ __('Profile Image') }}</label>
 
                             <div class="col-md-6">
                                 <input 
                                     id="profile_photo" 
                                     type="file" 
-                                    class="@error('name') is-invalid @enderror" 
-                                    name="profile_photo" 
-                                    value="{{ old('name') }}"
-                                    required autocomplete="profile_photo" autofocus>
+                                    name="profile_photo">
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
