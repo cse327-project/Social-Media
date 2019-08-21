@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
+//All are protected routes
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', 'StatusController@index');
     Route::resource('/status', 'StatusController');
