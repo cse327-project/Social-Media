@@ -20,13 +20,3 @@ Route::get('/user/{username}', 'ProfileController@get_profile')->name('user.prof
 
 
 
-Route::get('/upload', function () {
-    return view('upload');
-});
-
-
-Route::post('/upload', function (Request $request) {
-
-    $image = $request->image->store('/public/profile-photos');
-    return $image;
-});
