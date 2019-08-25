@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Status::class);
     }
+
+    protected function friends()
+    {
+        return $this->hasMany(Friend::class, 'friend_of', 'id');
+    }
+
+    protected function followers()
+    {
+        return $this->hasMany(Follow::class, 'follower_of', 'id');
+    }
 }

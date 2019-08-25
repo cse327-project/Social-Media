@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -46,8 +47,23 @@
                                 </li>
                             @endif
                         @else
+                            
+                            @if($reuqest_count)
+                            <li class="nav-item dropdown">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('request-list') }}">
+                                        Requests
+                                        <span class="badge badge-pill badge-primary">{{ $reuqest_count }}</span>
+                                    </a>
+                                </li>
+                            </li>
+                            @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                    <img height="30" width="30" src="{{ Storage::url(Auth::user()->profile_photo) }}" alt="{{ Auth::user()->name }}">
+
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

@@ -48,7 +48,6 @@
                             @enderror
                         </div>
 
-
                         <div class="form-group">
                             <label for="bio">Your Bio</label>
                             <textarea name="bio" id="bio" placeholder="Your Bio" cols="30" rows="3" class="form-control @error('bio') is-invalid @enderror">{{ $user->bio }}</textarea>

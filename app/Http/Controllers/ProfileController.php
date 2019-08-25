@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Request as FriendRequest;
 
 class ProfileController extends Controller
 {
     public function get_profile(User $username)
     {
         $user = $username;
-        return view('profile/profile', compact('user'));
+        $has_request = false;
+        if (\Auth::check()) {
+            $request_this_user = FriendRequest::where(['send_to' => $user->id, 'sender_id' => auth()->user()->id])->get();
+            $has_request = $request_this_user->count();
+        }
+
+        return view('profile/profile', compact('user', 'has_request'));
     }
 
 

@@ -24,10 +24,7 @@
                     </a>
                     @endif
                 </div>
-
                 @include('components.status.replies')
-
-
             </div>
         </div>
     </div>

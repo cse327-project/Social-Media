@@ -16,6 +16,7 @@
         </p>
     </div>
     <div class="card-footer d-flex justify-content-between">
+        @auth
         <div>
             <span>Comments({{ $status->comments->count() }})</span>
             @if (auth()->user()->id === $status->user->id)
@@ -24,6 +25,7 @@
             </span>
             @endif
         </div>
+        @endauth
         <a href="{{ route('status.show' , $status->id) }}">Read</a>
     </div>
 </div>
